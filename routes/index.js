@@ -101,7 +101,7 @@ if(!date){
 /* GET edit contact */
 router.get('/edit/:ID', function(req, res){
   var db = req.db;
-  var collection = db.get('contacts');
+  var collection = db.get('contact');
   collection.findOne({_id: req.params.ID}, function(err, contact){
     res.render('editcontact', {"contact":contact});
   });
@@ -110,14 +110,14 @@ router.get('/edit/:ID', function(req, res){
 /* POST request for edit contact*/
 router.post('/editcontact/:ID', function(req,res){
   var db= req.db;
-  var collection = db.get('contacts');
+  var collection = db.get('contact');
   if(req.body.button == "no"){
     res.location("/");
     res.redirect("/");
   } else {
 // GET values for form
- var firstName = req.body.fname;
- var lastName = req.body.lname;
+ var fName = req.body.fname;
+ var lName = req.body.lname;
  var company = req.body.company;
  var title = req.body.title;
  var email = req.body.email;
