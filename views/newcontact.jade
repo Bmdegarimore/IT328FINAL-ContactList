@@ -1,0 +1,63 @@
+extends layout
+
+block content
+ head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="")
+    meta(name="author", content="Brandon Degarimore")
+    link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+      script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+      script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+  body
+  .container
+      .row
+        .col-lg-12.text-center
+  div.header
+    h1.text-center New Contact
+  -if(errors)
+    p.text-danger= message
+    ul
+      each error in errors
+        li= error.msg
+  form.form-horizontal(name="newcontact", role="form", action="/add", method="post")
+
+                    div.col-md-6
+                      label.control-label(for="fname") First Name:
+                      input.form-control(type='text' name='fname')
+                    
+                    div.col-md-6
+                      label.control-label(for="lname") Last Name:
+                      input.form-control(type='text' name='lname')
+
+                    div.col-md-6
+                      label.control-label(for="title") Title:
+                      input.form-control(type='text' name='title')
+
+                    div.col-md-6
+                      label.control-label(for="company") Company:
+                      input.form-control(type='text' name='company')
+                      
+                    div.col-md-6
+                      label.control-label(for="email") Email:
+                      input.form-control(type='text' name='email')
+
+                    div.col-md-6
+                      label.control-label(for="met") Where we Met:
+                      input.form-control(type='text' name='met')
+                     
+                    div.col-md-6
+                      label.control-label(for="date") When we Met (mm-dd-yyyy):
+                      input.form-control(class="inputFormat" type="text" name="date" id="date")
+                   
+                    div.col-md-6
+                      label.form-label(for="comments") Comments:
+                      textarea.form-control(class="inputFormat" name="comments" id="comments" maxlength="200")
+                    
+                    div.row.text-right
+                      div.col-md-8
+                      button.btn.btn-success.btn-lg(type='submit' name='submit') Good To Go!
+      .row
+    .container

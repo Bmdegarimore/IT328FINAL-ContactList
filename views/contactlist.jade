@@ -1,0 +1,53 @@
+extend layout
+doctype html
+html(lang="en")
+block content
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="")
+    meta(name="author", content="Brandon Degarimore")
+    link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/bootstrap-table.min.css")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/bootstrap-table.min.js")
+      script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+      script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+  body
+    .container
+      .row
+        .col-lg-12.text-center
+        table(data-toggle="table", data-search="true",data-query-params="queryParams", data-pagination="true", data-show-toggle="true", data-show-columns="true", data-sort-name="fname", data-sort-order="desc")
+            thead
+              tr
+                th Delete
+                th Edit
+                th(data-field="fname", data-sortable="true") First Name
+                th(data-field="lname", data-sortable="true") Last Name
+                th(data-field="title", data-sortable="true") Title
+                th(data-field="company", data-sortable="true") Company
+                th(data-field="email", data-sortable="true") Email
+                th(data-field="met", data-sortable="true") Where We Met
+                th(data-field="datemet", data-sortable="true") When We Met
+                th(data-field="comments") Comments
+            tbody
+                each contact in contactlist
+                  tr
+                    td
+                      a(href='/delete/#{contact._id}')
+                        span.glyphicon.glyphicon-remove(aria-hidden='true')
+                    td
+                      a(href='/edit/#{contact._id}')
+                        span.glyphicon.glyphicon-pencil(aria-hidden='true')
+                    td #{contact.name.fname}
+                    td #{contact.name.lname}
+                    td #{contact.title}
+                    td #{contact.company}
+                    td #{contact.email}
+                    td #{contact.met}
+                    td #{contact.date}
+                    td #{contact.comments}
+      .row
+    .container
+    script(src="//code.jquery.com/jquery-1.11.1.min.js")

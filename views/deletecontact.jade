@@ -1,0 +1,61 @@
+extend layout
+doctype html
+html(lang="en")
+block content
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="")
+    meta(name="author", content="Brandon Degarimore")
+    link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+      script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+      script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+  body
+    .container
+      .row
+        .col-lg-12.text-center
+      div.header
+        h1.text-center Delete Contact
+      form.form-horizontal(role="form", action="/deletecontact/#{contact._id}", method="post")
+        div.col-md-6
+          label.control-label(for="fname") First Name:
+          input.form-control(type="text" name="firstname" id="firstName" value="#{contact.name.fname}" disabled)
+
+        div.col-md-6
+          label.control-label(for="lname") Last Name:
+          input.form-control(type="text" name="lastname" id="lastName" value="#{contact.name.lname}" disabled)
+
+        div.col-md-6
+          label.control-label(for="title") Title:
+          input.form-control(type="text" name="title" id="title" value="#{contact.title}" disabled)
+        
+        div.col-md-6
+          label.control-label(for="company") Company:
+          input.form-control(type="text" name="company" id="company" value="#{contact.company}" disabled)
+        
+        div.col-md-6
+          label.control-label(for="email") Email:
+          input.form-control(type="text" name="email" id="email" value="#{contact.email}" disabled)
+
+        div.col-md-6
+          label.control-label(for="wheremet") Where did we meet:
+          input.form-control(type="text" name="met" id="met" value="#{contact.met}" disabled)
+
+        div.col-md-6
+          label.control-label(for="date") When We Met:
+          input.form-control(type="text" name="date" id="date" value="#{contact.date}" disabled)
+        
+        div.col-md-12
+          label.control-label(for="comments") Comments:
+          input.form-control(type="text" name="comments" id="comments" value="#{contact.comments}" disabled)
+       
+        div.row
+          div.col-md-6
+            button.btn.btn-success.btn-lg(type="submit" name="button" value="no") No Way!
+          div.col-md-6
+            button.btn.btn-danger.btn-lg(type="submit" name="button" value="yes") Ok!
+      .row
+    .container
+           
