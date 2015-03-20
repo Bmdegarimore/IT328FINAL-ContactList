@@ -47,13 +47,12 @@ if(!date){
  } else {
    req.assert('date', date).isDate({format: 'dd-mm-yyyy'});
  }
-
+//No errors, pass variables and write to DB
  var errors = req.validationErrors();
  if(!errors){
-  //if no errors, pass values
  var db = req.db;
  
- // GET values for form
+ // GET values from form
  var fName = req.body.fname;
  var lName = req.body.lname;
  var company = req.body.company;
@@ -62,7 +61,7 @@ if(!date){
  var met = req.body.met;
  var date = req.body.date;
  var comments = req.body.comments;
- //Set Collection
+
  var collection = db.get('contact');
  
  //Submit to DB
@@ -76,7 +75,7 @@ if(!date){
  "comments": comments
   }, function (err,doc){
        if(err){
-         //if failed return error
+         //if failed return error message
          res.send("Bro something wen't wrong!")
        }
        else {
